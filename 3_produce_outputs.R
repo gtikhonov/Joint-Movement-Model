@@ -1,8 +1,10 @@
-setwd("D:/HY-data/OVASKAIN/all stuff/manuscripts/Submitted/Danielle Ramos/Rcode")
+# setwd("D:/HY-data/OVASKAIN/all stuff/manuscripts/Submitted/Danielle Ramos/Rcode")
 #.libPaths(c("D:\\HY-data\\OVASKAIN\\all stuff\\software\\R packages", .libPaths()))
+setwd("E:/Gleb/Joint-movement-model")
+
 #library(rgdal)
 
-case <- 1 #1: simulated; 2: birds; 3: moths
+case <- 3 #1: simulated; 2: birds; 3: moths
 if (case==1){
   datafile <-  "data\\simulated_data.Rdata"
   outfile <- "posteriors\\simulated_posterior.Rdata"
@@ -12,6 +14,11 @@ if (case==2){
   datafile <-  "data\\bird_data.Rdata"
   outfile <- "posteriors\\bird_posterior.Rdata"
   truevalues <- FALSE
+}
+if (case==3){
+   datafile <-  "data\\moth_data.Rdata"
+   outfile <- "posteriors\\moth_posterior.Rdata"
+   truevalues <- FALSE
 }
 
 load(file = datafile)

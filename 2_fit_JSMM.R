@@ -1,6 +1,7 @@
 # setwd("D:/HY-data/OVASKAIN/all stuff/manuscripts/Submitted/Danielle Ramos/Rcode")
 #.libPaths(c("D:\\HY-data\\OVASKAIN\\all stuff\\software\\R packages", .libPaths()))
-setwd("C:/Google Drive/MBG/Hierarchical movement model/Rcode")
+# setwd("C:/Google Drive/MBG/Hierarchical movement model/Rcode")
+setwd("E:/Gleb/Joint-movement-model")
 
 library(rgdal)
 library(MCMCpack) # for function riwish
@@ -41,7 +42,7 @@ if(case==3){
    source("R_moth_functions/loglik_single.R")
    parallel <- TRUE
    if(parallel){
-      cl <- makeCluster(4)
+      cl <- makeCluster(16)
       registerDoParallel(cl)
       source("R_moth_functions/parallel_loglik.R")
    } else {
@@ -50,7 +51,7 @@ if(case==3){
 }
 
 if(parallel){
-   out <- jsmm.mcmc(likelihood = parallel_loglik, data = data, n.iter = 500, n.adapt.iter = 100, n.thin = 10, rotate = TRUE)
+   out <- jsmm.mcmc(likelihood=parallel_loglik, data=data, n.iter=50, n.adapt.iter=10, n.thin=1, rotate=TRUE)
 } else {
    out <- jsmm.mcmc(likelihood = loglik, data = data, n.iter = 100, n.adapt.iter = 100, n.thin = 1, rotate = TRUE)
 }
